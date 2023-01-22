@@ -1,0 +1,37 @@
+{
+   "name": "bot",
+   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "apps/bot/src",
+   "projectType": "application",
+   "targets": {
+      "build": {
+         "executor": "@nrwl/esbuild:esbuild",
+         "outputs": ["{options.outputPath}"],
+         "options": {
+            "outputPath": "dist/apps/bot",
+            "format": ["cjs"],
+            "main": "apps/bot/src/main.ts",
+            "tsConfig": "apps/bot/tsconfig.app.json"
+         }
+      },
+      "serve": {
+         "executor": "@nrwl/js:node",
+         "options": {
+            "buildTarget": "bot:build"
+         },
+         "configurations": {
+            "production": {
+               "buildTarget": "bot:build:production"
+            }
+         }
+      },
+      "lint": {
+         "executor": "@nrwl/linter:eslint",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "lintFilePatterns": ["apps/bot/**/*.ts"]
+         }
+      }
+   },
+   "tags": []
+}
