@@ -1,40 +1,40 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "ch43-bot",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "MzQzMjA2NzYtMjA0My00YTlmLTg2ODgtMTY5MmFhODgzY2Y4fHJlYWQtd3JpdGU="
+   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+   "npmScope": "ch43-bot",
+   "tasksRunnerOptions": {
+      "default": {
+         "runner": "@nrwl/nx-cloud",
+         "options": {
+            "cacheableOperations": ["build", "lint", "test", "e2e"],
+            "accessToken": "MzQzMjA2NzYtMjA0My00YTlmLTg2ODgtMTY5MmFhODgzY2Y4fHJlYWQtd3JpdGU="
+         }
       }
-    }
-  },
-  "targetDefaults": {
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
-    }
-  },
-  "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "production": ["default", "!{projectRoot}/.eslintrc.json"],
-    "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
-  },
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "babel": true
+   },
+   "targetDefaults": {
+      "build": {
+         "dependsOn": ["^build"],
+         "inputs": ["production", "^production"]
+      },
+      "lint": {
+         "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
       }
-    },
-    "@nrwl/next": {
-      "application": {
-        "style": "@emotion/styled",
-        "linter": "eslint"
+   },
+   "namedInputs": {
+      "default": ["{projectRoot}/**/*", "sharedGlobals"],
+      "production": ["default", "!{projectRoot}/.eslintrc.json"],
+      "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
+   },
+   "generators": {
+      "@nrwl/react": {
+         "application": {
+            "babel": true
+         }
+      },
+      "@nrwl/next": {
+         "application": {
+            "style": "@emotion/styled",
+            "linter": "eslint"
+         }
       }
-    }
-  }
+   }
 }

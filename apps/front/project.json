@@ -1,55 +1,55 @@
 {
-  "name": "front",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/front",
-  "projectType": "application",
-  "targets": {
-    "build": {
-      "executor": "@nrwl/next:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "root": "apps/front",
-        "outputPath": "dist/apps/front"
+   "name": "front",
+   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "apps/front",
+   "projectType": "application",
+   "targets": {
+      "build": {
+         "executor": "@nrwl/next:build",
+         "outputs": ["{options.outputPath}"],
+         "defaultConfiguration": "production",
+         "options": {
+            "root": "apps/front",
+            "outputPath": "dist/apps/front"
+         },
+         "configurations": {
+            "development": {
+               "outputPath": "apps/front"
+            },
+            "production": {}
+         }
       },
-      "configurations": {
-        "development": {
-          "outputPath": "apps/front"
-        },
-        "production": {}
-      }
-    },
-    "serve": {
-      "executor": "@nrwl/next:server",
-      "defaultConfiguration": "development",
-      "options": {
-        "buildTarget": "front:build",
-        "dev": true
+      "serve": {
+         "executor": "@nrwl/next:server",
+         "defaultConfiguration": "development",
+         "options": {
+            "buildTarget": "front:build",
+            "dev": true
+         },
+         "configurations": {
+            "development": {
+               "buildTarget": "front:build:development",
+               "dev": true
+            },
+            "production": {
+               "buildTarget": "front:build:production",
+               "dev": false
+            }
+         }
       },
-      "configurations": {
-        "development": {
-          "buildTarget": "front:build:development",
-          "dev": true
-        },
-        "production": {
-          "buildTarget": "front:build:production",
-          "dev": false
-        }
+      "export": {
+         "executor": "@nrwl/next:export",
+         "options": {
+            "buildTarget": "front:build:production"
+         }
+      },
+      "lint": {
+         "executor": "@nrwl/linter:eslint",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
+         }
       }
-    },
-    "export": {
-      "executor": "@nrwl/next:export",
-      "options": {
-        "buildTarget": "front:build:production"
-      }
-    },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
-      }
-    }
-  },
-  "tags": []
+   },
+   "tags": []
 }
