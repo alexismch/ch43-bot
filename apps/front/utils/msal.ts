@@ -1,6 +1,6 @@
 import { LogLevel, ConfidentialClientApplication } from '@azure/msal-node';
 
-const redirectUri = `${process.env.FRONT_URL}/api/auth/login`;
+const redirectUri = `${process.env.FRONT_URL}/auth/login`;
 const scopes = ['email', 'profile', 'User.Read'];
 
 const getMsalConfig = () => {
@@ -32,7 +32,7 @@ const getMsalConfig = () => {
 };
 
 const loggerOptions = {
-   loggerCallback(loglevel, message, containsPii) {
+   loggerCallback(loglevel, message) {
       console.log(message);
    },
    piiLoggingEnabled: false,
