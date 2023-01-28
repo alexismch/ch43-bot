@@ -8,24 +8,6 @@ import { AuthorizationCodePayload } from '@azure/msal-common';
 
 const Login = () => null;
 
-// export const getServerSideProps = withIronSessionSsr(({ req, query }) => {
-//    if (req.session.user) {
-//       return {
-//          redirect: {
-//             destination: (query.origin as string) || '/',
-//             permanent: false,
-//          },
-//       };
-//    }
-//
-//    return {
-//       redirect: {
-//          destination: '/api/auth/login',
-//          permanent: false,
-//       },
-//    };
-// }, sessionOptions);
-
 const requestConfig = getMsalConfig().request;
 
 export const getServerSideProps = withIronSessionSsr(async ({ req, query }) => {

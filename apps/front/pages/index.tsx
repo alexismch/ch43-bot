@@ -1,23 +1,13 @@
 import type { InferGetServerSidePropsType, NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
-import { useRouter } from 'next/router';
 import { getServerSideProps } from '../utils/user';
+import { useLogin } from '../utils/login';
 
 const Home: NextPage<
    InferGetServerSidePropsType<typeof getServerSideProps>
 > = ({ user }) => {
-   const { pathname, push } = useRouter();
-
-   const logAction = (action: 'in' | 'out') =>
-      push({
-         pathname: `/auth/log${action}`,
-         query: {
-            origin: pathname,
-         },
-      });
-   const login = () => logAction('in');
-   const logout = () => logAction('out');
+   const { login, logout } = useLogin();
 
    return (
       <>
