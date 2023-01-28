@@ -1,18 +1,20 @@
-import { AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import './styles.css';
+import React from 'react';
+import '../styles/globals.css';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
    return (
       <>
          <Head>
-            <title>Welcome to front!</title>
+            <title>Ch43 Bot</title>
+            <link rel="shortcut icon" href="/vinci-logo.png" />
          </Head>
-         <main className="app">
+         <div className="App">
             <Component {...pageProps} />
-         </main>
+         </div>
       </>
    );
-}
+};
 
-export default CustomApp;
+export default MyApp;
