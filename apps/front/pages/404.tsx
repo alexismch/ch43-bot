@@ -1,12 +1,14 @@
-const Error404 = () => null;
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-export const getServerSideProps = () => {
-   return {
-      redirect: {
-         destination: '/',
-         permanent: true,
-      },
-   };
+const Error404 = () => {
+   const { replace } = useRouter();
+
+   useEffect(() => {
+      replace('/');
+   });
+
+   return null;
 };
 
 export default Error404;
