@@ -21,7 +21,9 @@
          },
          "configurations": {
             "production": {
-               "buildTarget": "bot:build:production"
+               "buildTarget": "bot:build:production",
+               "watch": false,
+               "inspect": false
             }
          }
       },
