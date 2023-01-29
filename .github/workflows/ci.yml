@@ -9,6 +9,15 @@ on:
 jobs:
    main:
       name: Nx Cloud - Main Job
+      env:
+        DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+        DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        FRONT_URL: ${{ secrets.FRONT_URL }}
+        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        AZURE_AUTHORITY: ${{ secrets.AZURE_AUTHORITY }}
+        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        SECRET_COOKIE_PASSWORD: ${{ secrets.SECRET_COOKIE_PASSWORD }}
       uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.8
       with:
          number-of-agents: 3
