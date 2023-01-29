@@ -22,14 +22,14 @@ jobs:
             yarn nx affected --target=test --parallel=3 --ci --code-coverage
             yarn nx affected --target=build --parallel=3
       env:
-        DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-        DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        FRONT_URL: ${{ secrets.FRONT_URL }}
-        AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-        AZURE_AUTHORITY: ${{ secrets.AZURE_AUTHORITY }}
-        AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-        SECRET_COOKIE_PASSWORD: ${{ secrets.SECRET_COOKIE_PASSWORD }}
+         DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+         DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
+         DATABASE_URL: ${{ secrets.DATABASE_URL }}
+         FRONT_URL: ${{ secrets.FRONT_URL }}
+         AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+         AZURE_AUTHORITY: ${{ secrets.AZURE_AUTHORITY }}
+         AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+         SECRET_COOKIE_PASSWORD: ${{ secrets.SECRET_COOKIE_PASSWORD }}
 
    agents:
       name: Nx Cloud - Agents
