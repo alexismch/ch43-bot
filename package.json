@@ -20,7 +20,8 @@
       "prepare": "husky install",
       "lint-staged": "lint-staged",
       "commitlint": "commitlint",
-      "deploy:commands": "nx run bot:deploy:commands"
+      "deploy:commands": "nx run bot:deploy:commands",
+      "postinstall": "prisma generate"
    },
    "private": true,
    "dependencies": {
