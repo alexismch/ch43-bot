@@ -19,13 +19,13 @@
       "prettier:check": "prettier --config .prettierrc --check \"apps/**/*.{ts,css,html,json,graphql}\"",
       "prepare": "husky install",
       "lint-staged": "lint-staged",
-      "commitlint": "commitlint"
+      "commitlint": "commitlint",
+      "deploy:commands": "nx run bot:deploy:commands"
    },
    "private": true,
    "dependencies": {
       "@azure/msal-node": "^1.14.6",
       "@discordjs/builders": "^1.4.0",
-      "@discordjs/rest": "^1.5.0",
       "@emotion/react": "11.10.5",
       "@emotion/server": "11.10.0",
       "@emotion/styled": "11.10.5",

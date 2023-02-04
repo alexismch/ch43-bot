@@ -2,7 +2,7 @@ import { SlashCommandBuilder } from '@discordjs/builders';
 import { CommandInteraction, Guild, GuildMember } from 'discord.js';
 import { delay } from '../utils';
 import { guildMemberAddHandler } from '../events';
-import { prisma } from '../main';
+import { prisma } from '../utils';
 
 module.exports = {
    isAdmin: true,

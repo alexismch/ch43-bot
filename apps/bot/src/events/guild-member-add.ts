@@ -10,7 +10,7 @@ import {
    GuildMember,
    TextChannel,
 } from 'discord.js';
-import { prisma } from '../main';
+import { prisma } from '../utils';
 
 export const guildMemberAddHandler = async (guildMember: GuildMember) => {
    try {

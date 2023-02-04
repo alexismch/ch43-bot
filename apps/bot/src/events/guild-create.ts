@@ -1,7 +1,7 @@
 import { Guild, EmbedBuilder } from 'discord.js';
 import { commands } from '../events';
 import { Command } from '../utils';
-import { RESTPostAPIChatInputApplicationCommandsJSONBody } from 'discord-api-types/v9';
+import { RESTPostAPIChatInputApplicationCommandsJSONBody } from 'discord.js';
 
 export const adminCommands = commands.reduce(
    (

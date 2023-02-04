@@ -14,6 +14,16 @@
             "tsConfig": "apps/bot/tsconfig.app.json"
          }
       },
+      "build:commandDeployment": {
+         "executor": "@nrwl/esbuild:esbuild",
+         "outputs": ["{options.outputPath}"],
+         "options": {
+            "outputPath": "dist/apps/bot",
+            "format": ["cjs"],
+            "main": "apps/bot/src/deploy-commands.ts",
+            "tsConfig": "apps/bot/tsconfig.app.json"
+         }
+      },
       "serve": {
          "executor": "@nrwl/js:node",
          "options": {
@@ -25,6 +35,14 @@
                "watch": false,
                "inspect": false
             }
+         }
+      },
+      "deploy:commands": {
+         "executor": "@nrwl/js:node",
+         "options": {
+            "buildTarget": "bot:build:commandDeployment",
+            "watch": false,
+            "inspect": false
          }
       },
       "lint": {

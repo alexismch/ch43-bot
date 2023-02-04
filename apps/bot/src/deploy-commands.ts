@@ -2,12 +2,11 @@ import { config } from 'dotenv';
 config();
 
 import { getCommandsArray } from './utils';
-import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/v9';
+import { REST, Routes } from 'discord.js';
 
 const commands = getCommandsArray({ isAdmin: false });
 
-const rest = new REST({ version: '9' }).setToken(process.env.DISCORD_TOKEN);
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 
 rest
    .put(Routes.applicationCommands(process.env.DISCORD_CLIENT_ID), {

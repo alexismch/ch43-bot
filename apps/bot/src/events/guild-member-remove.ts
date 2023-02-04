@@ -1,5 +1,5 @@
 import { GuildMember, PartialGuildMember } from 'discord.js';
-import { prisma } from '../main';
+import { prisma } from '../utils';
 
 export const guildMemberRemoveHandler = async (
    guildMember: GuildMember | PartialGuildMember,

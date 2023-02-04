@@ -1,8 +1,6 @@
-import { EmbedBuilder } from 'discord.js';
+import { EmbedBuilder, REST, Routes } from 'discord.js';
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../utils/prisma';
-import { REST } from '@discordjs/rest';
-import { Routes } from 'discord-api-types/v9';
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { sessionOptions } from '../../../utils/session';
 
@@ -71,7 +69,7 @@ const handler = async (req: Request, res: NextApiResponse) => {
    });
 
    if (settings && settings.verifiedRole) {
-      const rest = new REST({ version: '9' }).setToken(
+      const rest = new REST({ version: '10' }).setToken(
          process.env.DISCORD_TOKEN,
       );
       await rest.put(
