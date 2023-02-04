@@ -81,5 +81,8 @@
       "**/*.{ts, js}": [
          "yarn affected:lint -- --uncommitted --parallel"
       ]
+   },
+   "prisma": {
+      "schema": "libs/prisma/schema.prisma"
    }
 }

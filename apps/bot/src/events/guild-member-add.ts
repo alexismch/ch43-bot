@@ -10,7 +10,7 @@ import {
    GuildMember,
    TextChannel,
 } from 'discord.js';
-import { prisma } from '../utils';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const guildMemberAddHandler = async (guildMember: GuildMember) => {
    try {

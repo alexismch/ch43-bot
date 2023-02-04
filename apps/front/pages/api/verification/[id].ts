@@ -1,8 +1,8 @@
 import { EmbedBuilder, REST, Routes } from 'discord.js';
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../utils/prisma';
 import { withIronSessionApiRoute } from 'iron-session/next';
 import { sessionOptions } from '../../../utils/session';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 type Request = NextApiRequest & {
    query: {

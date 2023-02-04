@@ -1,5 +1,5 @@
 import { Guild } from 'discord.js';
-import { prisma } from '../utils';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const guildDeleteHandler = async (guild: Guild) => {
    try {

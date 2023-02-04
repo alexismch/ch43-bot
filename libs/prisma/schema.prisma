@@ -1,5 +1,6 @@
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
+  output   = "./src/client"
 }
 
 datasource db {
@@ -16,9 +17,9 @@ model Settings {
 }
 
 model Verification {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  guildId    String
-  userId     String
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  guildId String
+  userId  String
 }
 
 model User {

@@ -1,4 +1,3 @@
-import { Verification } from '@prisma/client';
 import {
    GetServerSideProps,
    GetServerSidePropsResult,
@@ -7,7 +6,7 @@ import {
 } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import prisma from '../../utils/prisma';
+import { prismaInstance as prisma, Verification } from '@ch43-bot/prisma';
 import { getServerSideProps as userGetServerSideProps } from '../../utils/user';
 import { useLogin } from '../../utils/login';
 
