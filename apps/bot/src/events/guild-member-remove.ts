@@ -9,17 +9,12 @@ export const guildMemberRemoveHandler = async (
          await guildMember.deleteDM();
       } catch {}
 
-      await prisma.user.deleteMany({
+      await prisma.user.delete({
          where: {
-            guildId: guildMember.guild.id,
-            userId: guildMember.user?.id,
-         },
-      });
-
-      await prisma.verification.deleteMany({
-         where: {
-            guildId: guildMember.guild.id,
-            userId: guildMember.user?.id,
+            guildId_userId: {
+               guildId: guildMember.guild.id,
+               userId: guildMember.user?.id,
+            },
          },
       });
    } catch (e) {

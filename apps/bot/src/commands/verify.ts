@@ -10,9 +10,16 @@ module.exports = {
       .setName('verify')
       .setDescription('Send a verification message to all unverified users.'),
    async execute(interaction: CommandInteraction & { guild: Guild }) {
-      const settings = await prisma.settings.findFirst({
+      const { settings } = await prisma.guild.findUnique({
          where: {
             guildId: interaction.guild.id,
+         },
+         select: {
+            settings: {
+               select: {
+                  verifiedRole: true,
+               },
+            },
          },
       });
       if (!settings || !settings.verifiedRole) {

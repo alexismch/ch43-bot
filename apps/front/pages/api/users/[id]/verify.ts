@@ -1,7 +1,7 @@
 import { EmbedBuilder, REST, Routes } from 'discord.js';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withIronSessionApiRoute } from 'iron-session/next';
-import { sessionOptions } from '../../../utils/session';
+import { sessionOptions } from '../../../../utils/session';
 import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 type Request = NextApiRequest & {
@@ -25,48 +25,47 @@ const handler = async (req: Request, res: NextApiResponse) => {
       query: { id },
    } = req;
 
-   const verification = await prisma.verification.findUnique({
+   const {
+      guild: { settings, ...guild },
+      ...user
+   } = await prisma.user.findUnique({
       where: {
          id,
       },
-   });
-   if (!verification) {
-      return res.status(404).send('No verification found');
-   }
-
-   const user = await prisma.user.findFirst({
-      where: {
-         OR: [
-            {
-               name: reqUser.name,
-            },
-            {
-               email: reqUser.email,
-            },
-         ],
-         AND: {
-            guildId: verification.guildId,
-         },
-      },
       select: {
          id: true,
+         userId: true,
+         isVerified: true,
+         guild: {
+            select: {
+               guildId: true,
+               settings: {
+                  select: {
+                     verifiedRole: true,
+                     helpTicketsChannel: true,
+                  },
+               },
+            },
+         },
       },
    });
-   if (user) {
-      return res
-         .status(409)
-         .send({ message: 'Your user is already in use on this server' });
+   if (!user) {
+      return res.status(404).send('No user found');
+   } else if (user.isVerified) {
+      return res.status(403).send('User already verified');
    }
 
-   const settings = await prisma.settings.findFirst({
+   const usersCounter = await prisma.user.count({
       where: {
-         guildId: verification.guildId,
-      },
-      select: {
-         verifiedRole: true,
-         helpTicketsChannel: true,
+         guildId: guild.guildId,
+         email: reqUser.email,
       },
    });
+   if (usersCounter) {
+      return res.status(409).send({
+         message: 'Your email address is already in use on this server',
+      });
+   }
 
    if (settings && settings.verifiedRole) {
       const rest = new REST({ version: '10' }).setToken(
@@ -74,24 +73,20 @@ const handler = async (req: Request, res: NextApiResponse) => {
       );
       await rest.put(
          Routes.guildMemberRole(
-            verification.guildId,
-            verification.userId,
+            guild.guildId,
+            user.userId,
             settings.verifiedRole,
          ),
       );
 
-      await prisma.verification.delete({
+      await prisma.user.update({
          where: {
-            id,
+            id: user.id,
          },
-      });
-
-      await prisma.user.create({
          data: {
-            guildId: verification.guildId,
-            userId: verification.userId,
             name: reqUser.name,
             email: reqUser.email,
+            isVerified: true,
          },
       });
 
@@ -102,9 +97,7 @@ const handler = async (req: Request, res: NextApiResponse) => {
                   new EmbedBuilder()
                      .setColor('#3ba55c')
                      .setTitle('User verified!')
-                     .setDescription(
-                        `<@${verification.userId}> has been verified!`,
-                     )
+                     .setDescription(`<@${user.userId}> has been verified!`)
                      .addFields(
                         {
                            name: 'Name',

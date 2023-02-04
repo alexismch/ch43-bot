@@ -1,12 +1,17 @@
 import { PrismaClient } from '../client';
+import { encryptionMiddleware } from './middlewares';
+
+const initInstance = () => {
+   const prismaInstance = new PrismaClient();
+   prismaInstance.$use(encryptionMiddleware.use);
+   return prismaInstance;
+};
 
 export let prismaInstance: PrismaClient;
 
 if (process.env.NODE_ENV === 'production') {
-   prismaInstance = new PrismaClient();
+   prismaInstance ??= initInstance();
 } else {
-   if (!global.prismaInstance) {
-      global.prismaInstance = new PrismaClient();
-   }
+   global.prismaInstance ??= initInstance();
    prismaInstance = global.prismaInstance;
 }

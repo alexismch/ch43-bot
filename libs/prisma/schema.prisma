@@ -8,36 +8,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Settings {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
-  guildId            String
+model Guild {
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
+  guildId  String   @unique
+  settings Settings
+  users    User[]
+}
+
+type Settings {
   adminRole          String?
   helpTicketsChannel String?
   verifiedRole       String?
 }
 
-model Verification {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  guildId String
-  userId  String
-}
-
 model User {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  guildId String
-  userId  String
-  email   String
-  name    String
-}
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
+  guildId    String
+  guild      Guild   @relation(fields: [guildId], references: [guildId], onDelete: Cascade, onUpdate: Cascade)
+  userId     String
+  email      String?
+  email_bidx String? @unique
+  name       String?
+  isVerified Boolean @default(false)
 
-model Series {
-  id             String @id @default(auto()) @map("_id") @db.ObjectId
-  guildId        String
-  block          Int
-  seriesNumber   Int
-  roleId         String
-  textChannelId  String
-  voiceChannelId String
-
-  @@unique([guildId, block, seriesNumber])
+  @@unique([guildId, userId])
 }
