@@ -10,34 +10,36 @@ import {
    GuildMember,
    TextChannel,
 } from 'discord.js';
-import { prisma } from '../utils';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const guildMemberAddHandler = async (guildMember: GuildMember) => {
    try {
-      const verification =
-         (await prisma.verification.findFirst({
-            where: {
-               guildId: guildMember.guild?.id as string,
-               userId: guildMember.user.id,
-            },
-         })) ||
-         (await prisma.verification.create({
-            data: {
-               guildId: guildMember.guild?.id as string,
-               userId: guildMember.user.id,
-            },
-         }));
-
-      const settings = await prisma.settings.findFirst({
-         where: {
+      const {
+         guild: { settings },
+         ...user
+      } = await prisma.user.create({
+         data: {
             guildId: guildMember.guild.id,
+            userId: guildMember.user.id,
+         },
+         select: {
+            id: true,
+            guild: {
+               select: {
+                  settings: {
+                     select: {
+                        helpTicketsChannel: true,
+                     },
+                  },
+               },
+            },
          },
       });
 
       const embed = new EmbedBuilder()
          .setColor('#3ba55c')
          .setTitle('Welcome!')
-         .setURL(`${process.env.FRONT_URL}/confirm/${verification.id}`)
+         .setURL(`${process.env.FRONT_URL}/verify/${user.id}`)
          .setDescription(
             `You just joined **[${guildMember.guild?.name}](https://discord.com/channels/${guildMember.guild?.id})** server, welcome!`,
          )
@@ -56,7 +58,7 @@ export const guildMemberAddHandler = async (guildMember: GuildMember) => {
          new ButtonBuilder()
             .setLabel('Verify')
             .setStyle(ButtonStyle.Link)
-            .setURL(`${process.env.FRONT_URL}/confirm/${verification.id}`),
+            .setURL(`${process.env.FRONT_URL}/verify/${user.id}`),
       ];
 
       if (settings && settings.helpTicketsChannel) {

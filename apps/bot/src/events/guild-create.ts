@@ -2,6 +2,7 @@ import { Guild, EmbedBuilder } from 'discord.js';
 import { commands } from '../events';
 import { Command } from '../utils';
 import { RESTPostAPIChatInputApplicationCommandsJSONBody } from 'discord.js';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const adminCommands = commands.reduce(
    (
@@ -18,6 +19,13 @@ export const adminCommands = commands.reduce(
 
 export const guildCreateHandler = async (guild: Guild) => {
    try {
+      await prisma.guild.create({
+         data: {
+            guildId: guild.id,
+            settings: {},
+         },
+      });
+
       await guild.commands.set(adminCommands);
       const owner = await guild.members.resolve(guild.ownerId);
       const dmChannel = await owner?.createDM();

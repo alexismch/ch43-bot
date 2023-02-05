@@ -12,7 +12,7 @@ import {
    readyHandler,
 } from './events';
 import { clientIntents, clientPartials } from './utils';
-import { prisma } from './utils';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const client: Client = new Client({
    intents: clientIntents,

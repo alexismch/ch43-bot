@@ -1,17 +1,13 @@
 import { Guild } from 'discord.js';
-import { prisma } from '../utils';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const guildDeleteHandler = async (guild: Guild) => {
    try {
-      const query = {
+      await prisma.guild.delete({
          where: {
             guildId: guild.id,
          },
-      };
-      await prisma.settings.deleteMany(query);
-      await prisma.user.deleteMany(query);
-      await prisma.verification.deleteMany(query);
-      await prisma.series.deleteMany(query);
+      });
    } catch (e) {
       console.log('---');
       console.log(`guildDeleteHandler error ${guild.id} ${guild.name}`);

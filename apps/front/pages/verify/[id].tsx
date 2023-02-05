@@ -1,4 +1,3 @@
-import { Verification } from '@prisma/client';
 import {
    GetServerSideProps,
    GetServerSidePropsResult,
@@ -7,13 +6,13 @@ import {
 } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
-import prisma from '../../utils/prisma';
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
 import { getServerSideProps as userGetServerSideProps } from '../../utils/user';
 import { useLogin } from '../../utils/login';
 
-const Confirm: NextPage<
+const Verify: NextPage<
    InferGetServerSidePropsType<typeof getServerSideProps>
-> = ({ verification, user }) => {
+> = ({ userId, user }) => {
    return (
       <>
          <Head>
@@ -22,7 +21,7 @@ const Confirm: NextPage<
          {!user ? (
             <Unauthenticated />
          ) : (
-            <Authenticated verification={verification} user={user} />
+            <Authenticated userId={userId} user={user} />
          )}
       </>
    );
@@ -42,10 +41,10 @@ const Unauthenticated = () => {
 };
 
 const Authenticated = ({
-   verification,
+   userId,
    user,
 }: {
-   verification: Verification;
+   userId: string;
    user: { name: string };
 }) => {
    const [message, setMessage] = useState<string>(
@@ -53,7 +52,7 @@ const Authenticated = ({
    );
 
    useEffect(() => {
-      fetch(`/api/verification/${verification.id}`, {
+      fetch(`/api/users/${userId}/verify`, {
          method: 'PATCH',
       })
          .then((r) => {
@@ -75,7 +74,7 @@ const Authenticated = ({
             console.log(e);
             setMessage('An error occurred during the verification');
          });
-   }, [verification.id]);
+   }, [userId]);
 
    return (
       <>
@@ -90,7 +89,7 @@ type ConfirmParams = {
 };
 
 type ConfirmProps = {
-   verification: Verification;
+   userId: string;
    user: {
       name: string;
    };
@@ -101,12 +100,16 @@ export const getServerSideProps: GetServerSideProps<
    ConfirmParams
 > = async (context): Promise<GetServerSidePropsResult<ConfirmProps>> => {
    try {
-      const verification = await prisma.verification.findFirst({
+      const user = await prisma.user.findUnique({
          where: {
             id: context.params?.id,
          },
+         select: {
+            id: true,
+            isVerified: true,
+         },
       });
-      if (!verification) {
+      if (!user || user.isVerified) {
          throw new Error();
       }
 
@@ -116,7 +119,7 @@ export const getServerSideProps: GetServerSideProps<
          ...userProps,
          props: {
             ...userProps.props,
-            verification: verification as Verification,
+            userId: user.id,
          },
       };
    } catch {
@@ -129,4 +132,4 @@ export const getServerSideProps: GetServerSideProps<
    }
 };
 
-export default Confirm;
+export default Verify;

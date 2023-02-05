@@ -20,7 +20,8 @@
       "prepare": "husky install",
       "lint-staged": "lint-staged",
       "commitlint": "commitlint",
-      "deploy:commands": "nx run bot:deploy:commands"
+      "deploy:commands": "nx run bot:deploy:commands",
+      "postinstall": "prisma generate"
    },
    "private": true,
    "dependencies": {
@@ -30,6 +31,7 @@
       "@emotion/server": "11.10.0",
       "@emotion/styled": "11.10.5",
       "@prisma/client": "^4.9.0",
+      "class-validator": "^0.14.0",
       "discord-api-types": "^0.37.28",
       "discord.js": "^14.7.1",
       "dotenv": "^16.0.3",
@@ -81,5 +83,8 @@
       "**/*.{ts, js}": [
          "yarn affected:lint -- --uncommitted --parallel"
       ]
+   },
+   "prisma": {
+      "schema": "libs/prisma/schema.prisma"
    }
 }
