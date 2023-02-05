@@ -1,5 +1,5 @@
 import { PrismaMiddleware } from './prisma.middleware';
-import { Prisma } from '../../client';
+import { Prisma } from '@prisma/client';
 import { isArray } from 'class-validator';
 import { CryptoUtils } from '@ch43-bot/utils';
 import { ENCRYPTED_PROPS } from '../prisma.config';
