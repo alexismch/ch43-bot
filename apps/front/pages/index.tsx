@@ -14,7 +14,7 @@ const Home: NextPage<
          <Head>
             <title>Home - Ch43 Bot</title>
          </Head>
-         <p>Welcome to IPL BOT</p>
+         <p>Welcome to Ch43 Bot</p>
          <span className="App-title">
             {!user ? (
                <button className="App-button" onClick={login}>

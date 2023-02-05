@@ -16,7 +16,7 @@ const Verify: NextPage<
    return (
       <>
          <Head>
-            <title>Confirm Account - IPL BOT</title>
+            <title>Confirm Account - Ch43 Bot</title>
          </Head>
          {!user ? (
             <Unauthenticated />
