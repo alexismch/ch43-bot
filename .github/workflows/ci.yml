@@ -15,6 +15,8 @@ env:
    AZURE_AUTHORITY: ${{ secrets.AZURE_AUTHORITY }}
    AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
    SECRET_COOKIE_PASSWORD: ${{ secrets.SECRET_COOKIE_PASSWORD }}
+   CRYPT_KEY: ${{ secrets.CRYPT_KEY }}
+   HASH_KEY: ${{ secrets.HASH_KEY }}
 
 jobs:
    main:
