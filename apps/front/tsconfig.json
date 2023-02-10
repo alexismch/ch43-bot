@@ -17,15 +17,7 @@
          }
       ]
    },
-   "include": [
-      "**/*.ts",
-      "**/*.tsx",
-      "**/*.js",
-      "**/*.jsx",
-      "next-env.d.ts",
-      "../../apps/front/.next/types/**/*.ts",
-      "../../dist/apps/front/.next/types/**/*.ts"
-   ],
+   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
    "exclude": [
       "node_modules",
       "jest.config.ts",

@@ -10,7 +10,7 @@
          "defaultConfiguration": "production",
          "options": {
             "root": "apps/front",
-            "outputPath": "dist/apps/front"
+            "outputPath": "apps/front/dist"
          },
          "configurations": {
             "development": {

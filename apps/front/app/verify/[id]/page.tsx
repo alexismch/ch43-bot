@@ -1,24 +1,16 @@
 import React from 'react';
-import { prismaInstance as prisma } from '@ch43-bot/prisma';
 import { notFound } from 'next/navigation';
-import { getUser as getLoggedInUser } from '../../../utils/getters';
+import {
+   getUser as getLoggedInUser,
+   getUserToVerify,
+} from '../../../utils/getters';
 import Unauthenticated from './Unauthenticated';
 import Authenticated from './Authenticated';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
    title: 'Verify',
-};
-
-const getUserToVerify = async (id: string) => {
-   return prisma.user.findUnique({
-      where: {
-         id,
-      },
-      select: {
-         id: true,
-         isVerified: true,
-      },
-   });
 };
 
 const Verify = async ({ params: { id } }) => {
