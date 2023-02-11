@@ -68,8 +68,10 @@ class EncryptionMiddleware implements PrismaMiddleware {
             const key = keys[i];
             const prop = source[keys[i]];
 
-            if (prop === null || prop === undefined) {
+            if (prop === null) {
                source[key] = prop;
+            } else if (prop === undefined) {
+               delete source[key];
             } else if (ENCRYPTED_PROPS[key]) {
                source[key] = CryptoUtils.decrypt(prop);
                if (ENCRYPTED_PROPS[key].hasBidx) {

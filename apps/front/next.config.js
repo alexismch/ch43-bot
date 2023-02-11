@@ -13,6 +13,12 @@ const nextConfig = {
       svgr: false,
    },
    reactStrictMode: false,
+   images: {
+      domains: ['cdn.discordapp.com'],
+   },
+   experimental: {
+      appDir: true,
+   },
 };
 
 module.exports = withNx(nextConfig);
