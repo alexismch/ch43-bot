@@ -1,8 +1,8 @@
 import { EmbedBuilder, REST, Routes } from 'discord.js';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { withIronSessionApiRoute } from 'iron-session/next';
-import { sessionOptions } from '../../../../utils/config/session';
 import { prismaInstance as prisma } from '@ch43-bot/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../../auth/[...nextauth]';
 
 type Request = NextApiRequest & {
    query: {
@@ -15,7 +15,7 @@ const handler = async (req: Request, res: NextApiResponse) => {
       return res.status(404).send(null);
    }
 
-   const reqUser = req.session.user;
+   const { user: reqUser } = await getServerSession(req, res, authOptions);
 
    if (!reqUser) {
       return res.status(401).send(null);
@@ -122,4 +122,4 @@ const handler = async (req: Request, res: NextApiResponse) => {
    return res.status(204).send(null);
 };
 
-export default withIronSessionApiRoute(handler, sessionOptions);
+export default handler;
