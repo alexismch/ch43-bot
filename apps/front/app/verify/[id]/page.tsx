@@ -1,11 +1,10 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import {
-   getUser as getLoggedInUser,
-   getUserToVerify,
-} from '../../../utils/getters';
+import { getUserToVerify } from '../../../utils/getters';
 import Unauthenticated from './Unauthenticated';
 import Authenticated from './Authenticated';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../../../pages/api/auth/[...nextauth]';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,7 +18,7 @@ const Verify = async ({ params: { id } }) => {
       notFound();
    }
 
-   const loggedInUser = await getLoggedInUser();
+   const loggedInUser = (await getServerSession(authOptions))?.user;
 
    return (
       <div>

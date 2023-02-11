@@ -7,7 +7,7 @@ const Authenticated = ({
    user,
 }: {
    userId: string;
-   user: { name: string };
+   user: { name?: string };
 }) => {
    const [message, setMessage] = useState<string>(
       'Verification in progress...',

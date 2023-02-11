@@ -1,6 +1,7 @@
 import React from 'react';
 import App from './App';
-import { getUser } from '../utils/getters';
+import { authOptions } from '../pages/api/auth/[...nextauth]';
+import { getServerSession } from 'next-auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -9,7 +10,7 @@ export const metadata = {
 };
 
 const Home = async () => {
-   const user = await getUser();
+   const user = (await getServerSession(authOptions))?.user;
 
    return (
       <>
