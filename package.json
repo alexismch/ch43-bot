@@ -25,15 +25,14 @@
    },
    "private": true,
    "dependencies": {
-      "@azure/msal-node": "^1.14.6",
       "@discordjs/builders": "^1.4.0",
       "@prisma/client": "^4.9.0",
       "class-validator": "^0.14.0",
       "discord-api-types": "^0.37.28",
       "discord.js": "^14.7.1",
       "dotenv": "^16.0.3",
-      "iron-session": "^6.3.1",
       "next": "^13.1.6",
+      "next-auth": "^4.19.2",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
       "tslib": "^2.3.0"

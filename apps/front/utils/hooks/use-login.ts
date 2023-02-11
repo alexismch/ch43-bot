@@ -1,12 +1,8 @@
-import { useRouter, usePathname } from 'next/navigation';
+import { signIn, signOut } from 'next-auth/react';
 
 export const useLogin = () => {
-   const { push } = useRouter();
-   const origin = usePathname();
-
-   const login = () =>
-      window.location.replace(`/api/auth/login?origin=${origin}`);
-   const logout = () => push(`/api/auth/logout?origin=${origin}`);
+   const login = () => signIn('azure-ad');
+   const logout = () => signOut();
 
    return {
       login,
