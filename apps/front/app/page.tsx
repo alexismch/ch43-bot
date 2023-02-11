@@ -2,6 +2,8 @@ import React from 'react';
 import App from './App';
 import { getUser } from '../utils/getters';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
    title: 'Home',
 };
