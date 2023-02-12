@@ -1,5 +1,6 @@
 import React from 'react';
-import App from './App';
+import Unauthenticated from '../components/Unauthenticated';
+import Authenticated from '../components/Authenticated';
 import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 
@@ -15,7 +16,9 @@ const Home = async () => {
    return (
       <>
          <p>Welcome to Ch43 Bot</p>
-         <App user={user} />
+         <span className="App-title">
+            {!user ? <Unauthenticated /> : <Authenticated user={user} />}
+         </span>
       </>
    );
 };

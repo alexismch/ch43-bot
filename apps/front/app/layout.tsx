@@ -6,6 +6,7 @@ export const metadata = {
       default: 'Ch43 Bot',
       template: '%s | Ch43 Bot',
    },
+   description: 'The Ch43 bot to ensure students validity & uniqueness.',
    icons: {
       icon: '/vinci-logo.png',
    },
@@ -13,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
    return (
-      <html>
+      <html lang="en">
          <body>
             <div className="App">{children}</div>
          </body>

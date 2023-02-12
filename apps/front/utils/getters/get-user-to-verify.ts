@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { prismaInstance as prisma } from '@ch43-bot/prisma';
 import { isMongoId } from 'class-validator';
 

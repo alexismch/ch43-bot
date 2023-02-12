@@ -1,8 +1,8 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { getUserToVerify } from '../../../utils/getters';
-import Unauthenticated from './Unauthenticated';
-import Authenticated from './Authenticated';
+import Authenticated from '../../../components/verify/[id]/Authenticated';
+import Unauthenticated from '../../../components/verify/[id]/Unauthenticated';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../../pages/api/auth/[...nextauth]';
 
