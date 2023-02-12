@@ -1,12 +1,12 @@
 import React from 'react';
 import { getUserGuilds } from '../../utils/getters';
-import { redirect } from 'next/navigation';
 import Guild from './Guild';
+import { Unauthorized } from '../../utils/errors';
 
 const Guilds = async ({ user }) => {
    const guilds = await getUserGuilds(user as { email: string });
    if (!guilds.length) {
-      redirect('/');
+      throw new Unauthorized();
    }
 
    return (
