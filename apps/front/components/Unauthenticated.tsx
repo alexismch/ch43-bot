@@ -8,7 +8,7 @@ const Unauthenticated = () => {
 
    return (
       <>
-         <button className="App-button" onClick={login}>
+         <button className="login-button" onClick={login}>
             LOGIN
          </button>
       </>

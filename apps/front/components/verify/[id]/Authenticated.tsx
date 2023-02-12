@@ -41,7 +41,9 @@ const Authenticated = ({
    return (
       <>
          <p>{message}</p>
-         <span className="App-title">{user.name}</span>
+         <span className="text-light-primary dark:text-dark-primary">
+            {user.name}
+         </span>
       </>
    );
 };

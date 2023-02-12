@@ -9,7 +9,7 @@ const Unauthenticated = () => {
    return (
       <>
          <p>Click on the button below in order to complete the verification</p>
-         <button className="App-button" onClick={login}>
+         <button className="login-button" onClick={login}>
             CONFIRM
          </button>
       </>

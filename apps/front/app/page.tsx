@@ -16,7 +16,7 @@ const Home = async () => {
    return (
       <>
          <p>Welcome to Ch43 Bot</p>
-         <span className="App-title">
+         <span className="text-light-primary dark:text-dark-primary">
             {!user ? <Unauthenticated /> : <Authenticated user={user} />}
          </span>
       </>

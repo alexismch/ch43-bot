@@ -16,7 +16,9 @@ export default function RootLayout({ children }) {
    return (
       <html lang="en">
          <body>
-            <div className="App">{children}</div>
+            <div className="text-center min-h-screen flex items-center justify-center flex-col text-light-black dark:text-dark-white text-[calc(10px+2vmin)]">
+               {children}
+            </div>
          </body>
       </html>
    );

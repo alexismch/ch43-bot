@@ -22,7 +22,7 @@ const Guild = ({ guild }) => {
          <span>{guild.name}</span>
          <span>
             <button
-               className="App-button"
+               className="login-button"
                onClick={() => push(`/guilds/${guild.id}`)}>
                Details
             </button>

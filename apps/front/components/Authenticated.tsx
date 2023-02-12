@@ -10,7 +10,7 @@ const Authenticated = ({ user }: { user: { name?: string } }) => {
       <>
          {user.name}
          <p>
-            <button className="App-button" onClick={logout}>
+            <button className="login-button" onClick={logout}>
                LOGOUT
             </button>
          </p>
