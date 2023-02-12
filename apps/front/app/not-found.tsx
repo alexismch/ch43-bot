@@ -1,11 +1,12 @@
-// import { redirect } from 'next/navigation';
-import React from 'react';
+'use client';
+
+import { NotFound as NotFoundError } from '../utils/errors';
+import { useEffect } from 'react';
 
 const NotFound = () => {
-   //TODO : change when debugged
-   // redirect('/');
-
-   return <p>404 - Not found</p>;
+   useEffect(() => {
+      throw new NotFoundError();
+   }, []);
 };
 
 export default NotFound;
