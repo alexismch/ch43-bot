@@ -19,6 +19,19 @@ const nextConfig = {
    experimental: {
       appDir: true,
    },
+   webpack(config, { nextRuntime }) {
+      if (nextRuntime === 'nodejs') {
+         config.externals = [
+            ...config.externals,
+            'erlpack',
+            'zlib-sync',
+            'bufferutil',
+            'utf-8-validate',
+         ];
+      }
+
+      return config;
+   },
 };
 
 module.exports = withNx(nextConfig);
