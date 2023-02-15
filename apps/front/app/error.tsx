@@ -9,7 +9,6 @@ type BaseError = {
 };
 
 const Error = ({ error: thrownError }: { error: Error }) => {
-   console.log(thrownError);
    let error: BaseError;
    switch (thrownError.message) {
       case Unauthorized.title:

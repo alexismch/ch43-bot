@@ -7,6 +7,8 @@ const NotFound = () => {
    useEffect(() => {
       throw new NotFoundError();
    }, []);
+
+   return <></>;
 };
 
 export default NotFound;
