@@ -1,8 +1,8 @@
 import React from 'react';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../../pages/api/auth/[...nextauth]';
-import Guilds from '../../components/guilds/Guilds';
-import Unauthorized from '../../components/guilds/Unauthorized';
+import Guilds from '../../components/app/guilds/Guilds';
+import Unauthorized from '../../components/errors/Unauthorized';
 
 export const dynamic = 'force-dynamic';
 

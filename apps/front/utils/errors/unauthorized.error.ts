@@ -5,6 +5,8 @@ export class Unauthorized extends BaseError {
 
    static title = 'Unauthorized';
 
+   static description = "You aren't authorized to see this.";
+
    constructor() {
       super(Unauthorized.title);
    }

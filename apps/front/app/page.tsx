@@ -1,6 +1,6 @@
 import React from 'react';
-import Unauthenticated from '../components/Unauthenticated';
-import Authenticated from '../components/Authenticated';
+import Unauthenticated from '../components/app/Unauthenticated';
+import Authenticated from '../components/app/Authenticated';
 import { authOptions } from '../pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 

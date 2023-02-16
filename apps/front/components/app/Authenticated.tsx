@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useLogin } from '../utils/hooks';
+import { useLogin } from '../../utils/hooks';
 
 const Authenticated = ({ user }: { user: { name?: string } }) => {
    const { logout } = useLogin();
