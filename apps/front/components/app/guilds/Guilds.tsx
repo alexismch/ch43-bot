@@ -19,11 +19,10 @@ const Guilds = async ({ user }) => {
             {guilds.map((guild) => (
                <Guild key={guild.id} guild={guild} />
             ))}
-            <div className="w-60 h-44 shadow-md bg-white dark:bg-dark-dark-grey rounded h-fit overflow-hidden flex justify-center items-center">
+            <div className="w-60 h-44 shadow-md bg-white dark:bg-dark-dark-grey hover:bg-light-primary dark:hover:bg-dark-primary rounded h-fit overflow-hidden flex justify-center items-center text-light-primary dark:text-dark-primary hover:text-light-white dark:hover:text-dark-dark-grey">
                <Link
                   href={`https://discord.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&permissions=8&scope=bot`}
-                  target="_blank"
-                  className="text-light-primary dark:text-dark-primary">
+                  target="_blank">
                   +
                </Link>
             </div>
