@@ -21,6 +21,7 @@
       "lint-staged": "lint-staged",
       "commitlint": "commitlint",
       "deploy:commands": "nx run bot:deploy:commands",
+      "reassign-verified-role": "nx run bot:reassign-verified-role",
       "postinstall": "prisma generate"
    },
    "private": true,

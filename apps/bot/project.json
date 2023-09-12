@@ -24,6 +24,16 @@
             "tsConfig": "apps/bot/tsconfig.app.json"
          }
       },
+      "build:reassignVerifiedRole": {
+         "executor": "@nrwl/esbuild:esbuild",
+         "outputs": ["{options.outputPath}"],
+         "options": {
+            "outputPath": "dist/apps/bot",
+            "format": ["cjs"],
+            "main": "apps/bot/src/reassign-verified-role.ts",
+            "tsConfig": "apps/bot/tsconfig.app.json"
+         }
+      },
       "serve": {
          "executor": "@nrwl/js:node",
          "options": {
@@ -41,6 +51,14 @@
          "executor": "@nrwl/js:node",
          "options": {
             "buildTarget": "bot:build:commandDeployment",
+            "watch": false,
+            "inspect": false
+         }
+      },
+      "reassign-verified-role": {
+         "executor": "@nrwl/js:node",
+         "options": {
+            "buildTarget": "bot:build:reassignVerifiedRole",
             "watch": false,
             "inspect": false
          }
