@@ -32,10 +32,10 @@
       "discord-api-types": "^0.37.28",
       "discord.js": "^14.7.1",
       "dotenv": "^16.0.3",
-      "next": "^13.1.6",
+      "next": "16.0.0",
       "next-auth": "^4.20.1",
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0",
+      "react": "19.2.0",
+      "react-dom": "19.2.0",
       "tslib": "^2.3.0"
    },
    "devDependencies": {
@@ -51,13 +51,13 @@
       "@nrwl/react": "15.6.3",
       "@nrwl/workspace": "15.6.3",
       "@types/node": "18.11.9",
-      "@types/react": "^18.0.27",
-      "@types/react-dom": "^18.0.10",
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2",
       "@typescript-eslint/eslint-plugin": "^5.36.1",
       "@typescript-eslint/parser": "^5.36.1",
       "esbuild": "^0.15.7",
-      "eslint": "~8.15.0",
-      "eslint-config-next": "^13.1.6",
+      "eslint": "^9",
+      "eslint-config-next": "16.0.0",
       "eslint-config-prettier": "8.1.0",
       "eslint-plugin-import": "2.26.0",
       "eslint-plugin-jsx-a11y": "6.6.1",
@@ -80,5 +80,10 @@
    },
    "prisma": {
       "schema": "libs/prisma/schema.prisma"
+   },
+   "packageManager": "yarn@4.10.3",
+   "resolutions": {
+      "@types/react": "19.2.2",
+      "@types/react-dom": "19.2.2"
    }
 }
