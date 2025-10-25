@@ -3220,6 +3220,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nx/devkit@npm:22.0.1":
+  version: 22.0.1
+  resolution: "@nx/devkit@npm:22.0.1"
+  dependencies:
+    "@zkochan/js-yaml": "npm:0.0.7"
+    ejs: "npm:^3.1.7"
+    enquirer: "npm:~2.3.6"
+    minimatch: "npm:9.0.3"
+    semver: "npm:^7.5.3"
+    tslib: "npm:^2.3.0"
+    yargs-parser: "npm:21.1.1"
+  peerDependencies:
+    nx: ">= 21 <= 23 || ^22.0.0-0"
+  checksum: 10c0/7e7cb7c43e58a601e878bb7b2f50468e36314ac73537fc31cd07faf24c41a25c7e80ddf8a7580a59f2f0d8780f5fb146f07b787c8110febd4b2a1a8014a1cfb1
+  languageName: node
+  linkType: hard
+
 "@nx/nx-darwin-arm64@npm:22.0.1":
   version: 22.0.1
   resolution: "@nx/nx-darwin-arm64@npm:22.0.1"
@@ -3287,6 +3304,23 @@ __metadata:
   version: 22.0.1
   resolution: "@nx/nx-win32-x64-msvc@npm:22.0.1"
   conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@nx/workspace@npm:22.0.1":
+  version: 22.0.1
+  resolution: "@nx/workspace@npm:22.0.1"
+  dependencies:
+    "@nx/devkit": "npm:22.0.1"
+    "@zkochan/js-yaml": "npm:0.0.7"
+    chalk: "npm:^4.1.0"
+    enquirer: "npm:~2.3.6"
+    nx: "npm:22.0.1"
+    picomatch: "npm:4.0.2"
+    semver: "npm:^7.6.3"
+    tslib: "npm:^2.3.0"
+    yargs-parser: "npm:21.1.1"
+  checksum: 10c0/0d3663cd4eb0d7cc8cdb6049890a576ab34a218877b74341d77dc87d94e03a103db2f0ba26c12e0d6a13e0b57ee52a8fcaabbd827431b2196b4b7bf86e025013
   languageName: node
   linkType: hard
 
@@ -5602,7 +5636,7 @@ __metadata:
     "@nrwl/next": "npm:15.6.3"
     "@nrwl/node": "npm:15.6.3"
     "@nrwl/react": "npm:15.6.3"
-    "@nrwl/workspace": "npm:15.6.3"
+    "@nx/workspace": "npm:22.0.1"
     "@prisma/client": "npm:^4.9.0"
     "@types/node": "npm:18.11.9"
     "@types/react": "npm:19.2.2"
@@ -12222,6 +12256,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picomatch@npm:4.0.2":
+  version: 4.0.2
+  resolution: "picomatch@npm:4.0.2"
+  checksum: 10c0/7c51f3ad2bb42c776f49ebf964c644958158be30d0a510efd5a395e8d49cb5acfed5b82c0c5b365523ce18e6ab85013c9ebe574f60305892ec3fa8eee8304ccc
+  languageName: node
+  linkType: hard
+
 "picomatch@npm:^2.0.4, picomatch@npm:^2.2.1, picomatch@npm:^2.2.3, picomatch@npm:^2.3.1":
   version: 2.3.1
   resolution: "picomatch@npm:2.3.1"
@@ -13587,7 +13628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.5.3, semver@npm:^7.6.0, semver@npm:^7.7.2":
+"semver@npm:^7.5.3, semver@npm:^7.6.0, semver@npm:^7.6.3, semver@npm:^7.7.2":
   version: 7.7.3
   resolution: "semver@npm:7.7.3"
   bin:
