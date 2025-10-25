@@ -1,18 +1,28 @@
 {
    "migrations": [
       {
-         "version": "20.2.0-beta.5",
-         "description": "Update TypeScript ESLint packages to v8.13.0 if they are already on v8",
-         "implementation": "./src/migrations/update-20-2-0/update-typescript-eslint-v8-13-0",
-         "package": "@nx/eslint",
-         "name": "update-typescript-eslint-v8.13.0"
+         "cli": "nx",
+         "version": "16.0.0-beta.1",
+         "description": "Replace @nx/eslint-plugin with @nx/eslint-plugin",
+         "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
+         "package": "@nx/eslint-plugin",
+         "name": "update-16-0-0-add-nx-packages"
       },
       {
-         "version": "20.3.0-beta.1",
-         "description": "Update ESLint flat config to include .cjs, .mjs, .cts, and .mts files in overrides (if needed)",
-         "implementation": "./src/migrations/update-20-3-0/add-file-extensions-to-overrides",
-         "package": "@nx/eslint",
-         "name": "add-file-extensions-to-overrides"
+         "cli": "nx",
+         "version": "17.2.6-beta.1",
+         "description": "Rename workspace rules from @nx/workspace/name to @nx/workspace-name",
+         "implementation": "./src/migrations/update-17-2-6-rename-workspace-rules/rename-workspace-rules",
+         "package": "@nx/eslint-plugin",
+         "name": "update-17-2-6-rename-workspace-rules"
+      },
+      {
+         "cli": "nx",
+         "version": "19.1.0-beta.6",
+         "description": "Migrate no-extra-semi rules into user config, out of nx extendable configs",
+         "implementation": "./src/migrations/update-19-1-0-migrate-no-extra-semi/migrate-no-extra-semi",
+         "package": "@nx/eslint-plugin",
+         "name": "update-19-1-0-rename-no-extra-semi"
       }
    ]
 }

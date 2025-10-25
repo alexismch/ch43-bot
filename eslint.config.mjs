@@ -1,5 +1,5 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
-import nrwlNx from '@nrwl/eslint-plugin-nx';
+import nrwlNx from '@nx/eslint-plugin';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
