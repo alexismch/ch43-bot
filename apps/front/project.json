@@ -3,6 +3,7 @@
    "$schema": "../../node_modules/nx/schemas/project-schema.json",
    "sourceRoot": "apps/front",
    "projectType": "application",
+   "tags": [],
    "targets": {
       "build": {
          "executor": "@nrwl/next:build",
@@ -51,6 +52,5 @@
             "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
          }
       }
-   },
-   "tags": []
+   }
 }
