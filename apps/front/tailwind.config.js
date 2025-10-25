@@ -10,7 +10,7 @@ module.exports = {
       ),
       ...createGlobPatternsForDependencies(__dirname),
    ],
-   darkMode: 'class',
+   darkMode: 'media',
    theme: {
       extend: {
          colors: {

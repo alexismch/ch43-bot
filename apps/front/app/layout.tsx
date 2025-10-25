@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../styles/globals.css';
 
 export const metadata = {
@@ -14,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
    return (
-      <html lang="en" className="light">
+      <html lang="en">
          <body>
             <div className="text-center min-h-screen flex items-center justify-center flex-col text-light-black dark:text-dark-white text-[calc(10px+2vmin)]">
                {children}
