@@ -46,11 +46,7 @@
          }
       },
       "lint": {
-         "executor": "@nrwl/linter:eslint",
-         "outputs": ["{options.outputFile}"],
-         "options": {
-            "lintFilePatterns": ["apps/front/**/*.{ts,tsx,js,jsx}"]
-         }
+         "executor": "@nx/eslint:lint"
       }
    }
 }
