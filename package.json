@@ -33,7 +33,7 @@
       "discord.js": "^14.7.1",
       "dotenv": "^16.0.3",
       "next": "16.0.0",
-      "next-auth": "^4.20.1",
+      "next-auth": "^4.24.11",
       "react": "19.2.0",
       "react-dom": "19.2.0",
       "tslib": "^2.3.0"
