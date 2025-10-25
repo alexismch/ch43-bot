@@ -17,15 +17,15 @@
       "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
    },
    "generators": {
-      "@nrwl/next": {
-         "application": {
-            "style": "@emotion/styled",
-            "linter": "eslint"
-         }
-      },
       "@nx/react": {
          "application": {
             "babel": true
+         }
+      },
+      "@nx/next": {
+         "application": {
+            "style": "@emotion/styled",
+            "linter": "eslint"
          }
       }
    },

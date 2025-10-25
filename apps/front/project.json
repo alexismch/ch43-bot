@@ -6,11 +6,10 @@
    "tags": [],
    "targets": {
       "build": {
-         "executor": "@nrwl/next:build",
+         "executor": "@nx/next:build",
          "outputs": ["{options.outputPath}"],
          "defaultConfiguration": "production",
          "options": {
-            "root": "apps/front",
             "outputPath": "apps/front/dist"
          },
          "configurations": {
@@ -21,7 +20,7 @@
          }
       },
       "serve": {
-         "executor": "@nrwl/next:server",
+         "executor": "@nx/next:server",
          "defaultConfiguration": "development",
          "options": {
             "buildTarget": "front:build",
@@ -40,7 +39,7 @@
          }
       },
       "export": {
-         "executor": "@nrwl/next:export",
+         "executor": "@nx/next:export",
          "options": {
             "buildTarget": "front:build:production"
          }
