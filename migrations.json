@@ -3,26 +3,34 @@
       {
          "cli": "nx",
          "version": "16.0.0-beta.1",
-         "description": "Replace @nx/workspace with @nx/workspace",
+         "description": "Replace @nx/node with @nx/node",
          "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
-         "package": "@nx/workspace",
+         "package": "@nx/node",
          "name": "update-16-0-0-add-nx-packages"
       },
       {
-         "version": "16.0.0-beta.4",
-         "description": "Generates a plugin called 'workspace-plugin' containing your workspace generators.",
          "cli": "nx",
-         "implementation": "./src/migrations/update-16-0-0/move-workspace-generators-to-local-plugin",
-         "package": "@nx/workspace",
-         "name": "16-0-0-move-workspace-generators-into-local-plugin"
+         "version": "16.0.0-beta.5",
+         "description": "Replace @nx/node:webpack with @nx/node:webpack",
+         "implementation": "./src/migrations/update-16-0-0/update-webpack-executor",
+         "package": "@nx/node",
+         "name": "update-16-0-0-update-executor"
       },
       {
-         "version": "16.0.0-beta.9",
-         "description": "Fix .babelrc presets if it contains an invalid entry for @nx/web/babel.",
          "cli": "nx",
-         "implementation": "./src/migrations/update-16-0-0/fix-invalid-babelrc",
-         "package": "@nx/workspace",
-         "name": "16-0-0-fix-invalid-babelrc"
+         "version": "16.3.1-beta.0",
+         "description": "Replace @nx/node:webpack and @nx/node:webpack with @nx/webpack:webpack for all project targets",
+         "implementation": "./src/migrations/update-16-3-1/update-webpack-executor",
+         "package": "@nx/node",
+         "name": "update-16-3-1-update-executor"
+      },
+      {
+         "cli": "nx",
+         "version": "16.4.0-beta.8",
+         "description": "Replace @nx/node:node with @nx/js:node for all project targets",
+         "implementation": "./src/migrations/update-16-4-0/replace-node-executor",
+         "package": "@nx/node",
+         "name": "update-16-4-0-replace-node-executor"
       }
    ]
 }
