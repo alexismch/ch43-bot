@@ -1,4 +1,5 @@
 import { GuildMember, PartialGuildMember } from 'discord.js';
+
 import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const guildMemberRemoveHandler = async (

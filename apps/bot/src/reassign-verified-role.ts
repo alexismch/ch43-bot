@@ -1,7 +1,9 @@
-import { config } from 'dotenv';
 import { Client } from 'discord.js';
-import { clientIntents, clientPartials, delay } from './utils';
+import { config } from 'dotenv';
+
 import { prismaInstance as prisma } from '@ch43-bot/prisma';
+
+import { clientIntents, clientPartials, delay } from './utils';
 
 config();
 

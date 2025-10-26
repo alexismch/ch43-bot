@@ -1,5 +1,4 @@
-import { ActivityType } from 'discord-api-types/v10';
-import { Client } from 'discord.js';
+import { Client, ActivityType } from 'discord.js';
 
 export const readyHandler = (client: Client) => {
    console.log('Bot ready to fight!');

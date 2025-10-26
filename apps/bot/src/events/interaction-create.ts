@@ -1,5 +1,6 @@
-import { getCommandsCollection, memberHasPermission } from '../utils';
 import { Interaction } from 'discord.js';
+
+import { getCommandsCollection, memberHasPermission } from '../utils';
 
 export const commands = getCommandsCollection();
 

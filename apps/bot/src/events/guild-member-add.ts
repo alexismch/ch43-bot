@@ -1,4 +1,5 @@
 import {
+   ActionRow,
    ActionRowBuilder,
    ButtonBuilder,
    ButtonComponent,
@@ -10,6 +11,7 @@ import {
    GuildMember,
    TextChannel,
 } from 'discord.js';
+
 import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const guildMemberAddHandler = async (guildMember: GuildMember) => {
@@ -118,14 +120,15 @@ export const guildMemberAddHandler = async (guildMember: GuildMember) => {
             }
 
             await interaction.update({
-               components: interaction.message.components.map((r) =>
-                  new ActionRowBuilder<ButtonBuilder>(r).setComponents(
-                     r.components.map((b: ButtonComponent) =>
-                        b.customId === interaction.customId
-                           ? updatedButton
-                           : new ButtonBuilder(b.data),
+               components: interaction.message.components.map(
+                  (r: ActionRow<ButtonComponent>) =>
+                     new ActionRowBuilder<ButtonBuilder>(r).setComponents(
+                        r.components.map((b: ButtonComponent) =>
+                           b.customId === interaction.customId
+                              ? updatedButton
+                              : new ButtonBuilder(b.data),
+                        ),
                      ),
-                  ),
                ),
             });
 

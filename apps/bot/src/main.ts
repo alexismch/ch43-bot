@@ -1,7 +1,8 @@
 import { config } from 'dotenv';
-config();
-
 import { Client, Events } from 'discord.js';
+
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
+
 import {
    guildCreateHandler,
    guildDeleteHandler,
@@ -12,7 +13,8 @@ import {
    readyHandler,
 } from './events';
 import { clientIntents, clientPartials } from './utils';
-import { prismaInstance as prisma } from '@ch43-bot/prisma';
+
+config();
 
 export const client: Client = new Client({
    intents: clientIntents,

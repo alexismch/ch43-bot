@@ -1,4 +1,5 @@
 import { Message, MessageMentions } from 'discord.js';
+
 import { client } from '../main';
 
 const mentionsMe = (mentions: MessageMentions): boolean =>

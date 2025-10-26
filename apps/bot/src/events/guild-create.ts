@@ -1,8 +1,13 @@
-import { Guild, EmbedBuilder } from 'discord.js';
+import {
+   Guild,
+   EmbedBuilder,
+   RESTPostAPIChatInputApplicationCommandsJSONBody,
+} from 'discord.js';
+
+import { prismaInstance as prisma } from '@ch43-bot/prisma';
+
 import { commands } from '../events';
 import { Command } from '../utils';
-import { RESTPostAPIChatInputApplicationCommandsJSONBody } from 'discord.js';
-import { prismaInstance as prisma } from '@ch43-bot/prisma';
 
 export const adminCommands = commands.reduce(
    (

@@ -2,8 +2,8 @@ import * as Crypto from 'crypto';
 import * as process from 'process';
 
 export class CryptoUtils {
-   private static ENCRYPTION_ALGORITHM = 'aes-256-cbc';
-   private static HASH_ALGORITHM = 'sha512';
+   private static ENCRYPTION_ALGORITHM = 'aes-256-cbc' as const;
+   private static HASH_ALGORITHM = 'sha512' as const;
 
    /**
     * Encrypt a string

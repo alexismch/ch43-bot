@@ -1,15 +1,24 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
-import { CommandInteraction, Guild, GuildMember } from 'discord.js';
-import { delay } from '../utils';
-import { guildMemberAddHandler } from '../events';
+import {
+   ChatInputCommandInteraction,
+   GuildMember,
+   SlashCommandBuilder,
+   SlashCommandUserOption,
+} from 'discord.js';
+
 import { prismaInstance as prisma } from '@ch43-bot/prisma';
+
+import { delay } from '../utils';
+import { guildMemberAddHandler } from '../events/guild-member-add';
 
 module.exports = {
    isAdmin: true,
    data: new SlashCommandBuilder()
       .setName('verify')
-      .setDescription('Send a verification message to all unverified users.'),
-   async execute(interaction: CommandInteraction & { guild: Guild }) {
+      .setDescription('Send a verification message to all unverified users.')
+      .addUserOption((option: SlashCommandUserOption) =>
+         option.setName('target').setDescription('The user to verify'),
+      ),
+   async execute(interaction: ChatInputCommandInteraction) {
       const { settings } = await prisma.guild.findUnique({
          where: {
             guildId: interaction.guild.id,
@@ -29,10 +38,14 @@ module.exports = {
          });
       }
       await interaction.deferReply();
+
+      const target = interaction.options.get('target')?.value;
+
       const membersCollection = (
-         await interaction.guild.members.fetch({ force: true })
+         await interaction.guild.members.fetch()
       )?.filter(
          (member) =>
+            (!target || member.id === target) &&
             !member.roles.cache.has(settings.verifiedRole as string) &&
             !member.user.bot,
       );

@@ -39,7 +39,7 @@
          }
       },
       "serve": {
-         "executor": "@nrwl/js:node",
+         "executor": "@nx/js:node",
          "options": {
             "buildTarget": "bot:build"
          },
@@ -52,7 +52,7 @@
          }
       },
       "deploy:commands": {
-         "executor": "@nrwl/js:node",
+         "executor": "@nx/js:node",
          "options": {
             "buildTarget": "bot:build:commandDeployment",
             "watch": false,
@@ -60,7 +60,7 @@
          }
       },
       "reassign-verified-role": {
-         "executor": "@nrwl/js:node",
+         "executor": "@nx/js:node",
          "options": {
             "buildTarget": "bot:build:reassignVerifiedRole",
             "watch": false,

@@ -8,8 +8,8 @@ import {
 export const clientIntents: BitFieldResolvable<GatewayIntentsString, number> = [
    GatewayIntentBits.Guilds,
    GatewayIntentBits.GuildMembers,
-   GatewayIntentBits.GuildBans,
-   GatewayIntentBits.GuildEmojisAndStickers,
+   GatewayIntentBits.GuildModeration,
+   GatewayIntentBits.GuildExpressions,
    GatewayIntentBits.GuildIntegrations,
    GatewayIntentBits.GuildWebhooks,
    GatewayIntentBits.GuildInvites,

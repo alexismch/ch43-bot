@@ -1,8 +1,9 @@
 import {
+   ChatInputCommandInteraction,
+   Message,
    SlashCommandBuilder,
    SlashCommandUserOption,
-} from '@discordjs/builders';
-import { CommandInteraction, Message } from 'discord.js';
+} from 'discord.js';
 
 module.exports = {
    data: new SlashCommandBuilder()
@@ -11,8 +12,8 @@ module.exports = {
       .addUserOption((option: SlashCommandUserOption) =>
          option.setName('target').setDescription('The user to fart on'),
       ),
-   async execute(interaction: CommandInteraction) {
-      let replyTo: CommandInteraction | Message = interaction;
+   async execute(interaction: ChatInputCommandInteraction) {
+      let replyTo: ChatInputCommandInteraction | Message = interaction;
       const target = interaction.options.get('target');
       if (target) {
          replyTo = (await interaction.reply({

@@ -1,9 +1,10 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
 import {
    Collection,
    CommandInteraction,
    PermissionsBitField,
+   SlashCommandBuilder,
 } from 'discord.js';
+
 import * as rawCommands from '../commands';
 
 export type Command = {
