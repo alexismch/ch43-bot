@@ -6,6 +6,10 @@ on:
          - main
    pull_request:
 
+permissions:
+   actions: read
+   contents: read
+
 env:
    DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
    DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
@@ -17,25 +21,37 @@ env:
    SECRET_COOKIE_PASSWORD: ${{ secrets.SECRET_COOKIE_PASSWORD }}
    CRYPT_KEY: ${{ secrets.CRYPT_KEY }}
    HASH_KEY: ${{ secrets.HASH_KEY }}
+   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
    main:
-      name: Nx Cloud - Main Job
-      uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.8
-      with:
-         number-of-agents: 3
-         init-commands: |
-            yarn nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
-         parallel-commands: |
-            yarn nx-cloud record -- yarn nx workspace-lint
-            yarn nx-cloud record -- yarn nx format:check
-         parallel-commands-on-agents: |
-            yarn nx affected --target=lint --parallel=3
-            yarn nx affected --target=test --parallel=3 --ci --code-coverage
-            yarn nx affected --target=build --parallel=3
+      runs-on: ubuntu-latest
+      steps:
+         - uses: actions/checkout@v4
+           with:
+              filter: tree:0
+              fetch-depth: 0
 
-   agents:
-      name: Nx Cloud - Agents
-      uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.8
-      with:
-         number-of-agents: 3
+         - run: corepack enable
+
+         # This enables task distribution via Nx Cloud
+         # Run this command as early as possible, before dependencies are installed
+         # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#npx-nxcloud-startcirun
+         # Connect your workspace by running "nx connect" and uncomment this line to enable task distribution
+         # - run: yarn dlx nx start-ci-run --distribute-on="3 linux-medium-js" --stop-agents-after="build"
+
+         # Cache node_modules
+         - uses: actions/setup-node@v4
+           with:
+              node-version: 20
+              cache: 'yarn'
+
+         - run: yarn install --immutable
+         - uses: nrwl/nx-set-shas@v4
+
+         # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
+         # - run: yarn nx-cloud record -- echo Hello World
+         - run: yarn nx affected -t lint test build
+         # Nx Cloud recommends fixes for failures to help you get CI green faster. Learn more: https://nx.dev/ci/features/self-healing-ci
+         - run: yarn nx fix-ci
+           if: always()

@@ -14,7 +14,10 @@
    "namedInputs": {
       "default": ["{projectRoot}/**/*", "sharedGlobals"],
       "production": ["default", "!{projectRoot}/.eslintrc.json"],
-      "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
+      "sharedGlobals": [
+         "{workspaceRoot}/babel.config.json",
+         "{workspaceRoot}/.github/workflows/ci.yml"
+      ]
    },
    "generators": {
       "@nx/react": {
