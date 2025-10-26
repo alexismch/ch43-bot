@@ -35,8 +35,6 @@ jobs:
          YARN_ENABLE_GLOBAL_CACHE: true
          # Slow networks/registry hiccups
          YARN_NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # harmless for public npm, useful if you pull GitHub Packages
-         # Optional: serialize link step a bit
-         YARN_NETWORK_TIMEOUT: 600000
 
       steps:
          - uses: actions/checkout@v4
