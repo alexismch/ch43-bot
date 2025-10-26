@@ -71,7 +71,7 @@ jobs:
          # Install: inline builds keep logs flowing; --immutable keeps lockfile strict
          - name: Install deps
            run: |
-              yarn install --immutable --inline-builds --verbose
+              yarn install --immutable
 
          - uses: nrwl/nx-set-shas@v4
 
