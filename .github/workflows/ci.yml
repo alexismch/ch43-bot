@@ -66,7 +66,6 @@ jobs:
            run: |
               yarn config set enableGlobalCache true
               yarn config set networkConcurrency 4
-              yarn config set childConcurrency 2
               yarn config set httpTimeout 600000
 
          # Install: inline builds keep logs flowing; --immutable keeps lockfile strict
