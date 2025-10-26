@@ -67,7 +67,6 @@ jobs:
               yarn config set enableGlobalCache true
               yarn config set networkConcurrency 8
               yarn config set httpTimeout 600000
-              yarn config set logFilters --json false
 
          # Install: inline builds keep logs flowing; --immutable keeps lockfile strict
          - name: Install deps
