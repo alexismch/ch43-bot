@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([
-   globalIgnores(['**/*', 'libs/prisma/src/client']),
+   globalIgnores(['libs/prisma/src/client']),
    {
       plugins: {
          '@nrwl/nx': nrwlNx,
@@ -42,12 +42,12 @@ export default defineConfig([
    },
    {
       files: ['**/*.ts', '**/*.tsx'],
-      extends: [...compat.extends('plugin:@nrwl/nx/typescript')],
+      extends: [...compat.extends('plugin:@nx/typescript')],
       rules: {},
    },
    {
       files: ['**/*.js', '**/*.jsx'],
-      extends: [...compat.extends('plugin:@nrwl/nx/javascript')],
+      extends: [...compat.extends('plugin:@nx/javascript')],
       rules: {},
    },
 ]);

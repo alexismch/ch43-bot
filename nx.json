@@ -29,5 +29,8 @@
          }
       }
    },
-   "useInferencePlugins": false
+   "useInferencePlugins": false,
+   "tui": {
+      "enabled": false
+   }
 }

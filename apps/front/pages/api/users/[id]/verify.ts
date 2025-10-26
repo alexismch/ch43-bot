@@ -15,9 +15,9 @@ const handler = async (req: Request, res: NextApiResponse) => {
       return res.status(404).send(null);
    }
 
-   const { user: reqUser } = await getServerSession(req, res, authOptions);
+   const reqUser = (await getServerSession(req, res, authOptions))?.user;
 
-   if (!reqUser) {
+   if (!reqUser || !reqUser.email || !reqUser.name) {
       return res.status(401).send(null);
    }
 
@@ -25,10 +25,7 @@ const handler = async (req: Request, res: NextApiResponse) => {
       query: { id },
    } = req;
 
-   const {
-      guild: { settings, ...guild },
-      ...user
-   } = await prisma.user.findUnique({
+   const result = await prisma.user.findUnique({
       where: {
          id,
       },
@@ -49,9 +46,17 @@ const handler = async (req: Request, res: NextApiResponse) => {
          },
       },
    });
-   if (!user) {
+
+   if (!result) {
       return res.status(404).send('No user found');
-   } else if (user.isVerified) {
+   }
+
+   const {
+      guild: { settings, ...guild },
+      ...user
+   } = result;
+
+   if (user.isVerified) {
       return res.status(403).send('User already verified');
    }
 
@@ -69,7 +74,7 @@ const handler = async (req: Request, res: NextApiResponse) => {
 
    if (settings && settings.verifiedRole) {
       const rest = new REST({ version: '10' }).setToken(
-         process.env.DISCORD_TOKEN,
+         process.env.DISCORD_TOKEN as string,
       );
       await rest.put(
          Routes.guildMemberRole(
