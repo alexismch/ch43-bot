@@ -26,16 +26,6 @@ env:
 jobs:
    main:
       runs-on: ubuntu-latest
-
-      env:
-         # Helps large dependency graphs / native builds
-         NODE_OPTIONS: --max-old-space-size=4096
-         # Ensure yarn keeps printing (avoids 10m idle timeout)
-         YARN_ENABLE_PROGRESS_BARS: true
-         YARN_ENABLE_GLOBAL_CACHE: true
-         # Slow networks/registry hiccups
-         YARN_NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # harmless for public npm, useful if you pull GitHub Packages
-
       steps:
          - uses: actions/checkout@v4
            with:
@@ -46,33 +36,9 @@ jobs:
          - uses: actions/setup-node@v4
            with:
               node-version: 20
+              cache: 'yarn'
 
-         # Proper Yarn Berry cache
-         - name: Cache Yarn
-           uses: actions/cache@v4
-           with:
-              path: |
-                 .yarn/cache
-                 .yarn/unplugged
-                 .yarn/build-state.yml
-                 .yarn/install-state.gz
-                 ~/.cache/yarn
-              key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-              restore-keys: |
-                 ${{ runner.os }}-yarn-
-
-         # Make yarn noisier & less bursty; set once per repo if you prefer
-         - name: Yarn CI knobs
-           run: |
-              yarn config set enableGlobalCache true
-              yarn config set networkConcurrency 4
-              yarn config set httpTimeout 600000
-
-         # Install: inline builds keep logs flowing; --immutable keeps lockfile strict
-         - name: Install deps
-           run: |
-              yarn install --immutable
-
+         - run: yarn install --immutable
          - uses: nrwl/nx-set-shas@v4
 
          - run: yarn nx affected -t lint test build
