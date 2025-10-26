@@ -12,7 +12,9 @@ export const metadata = {
    title: 'Verify',
 };
 
-const Verify = async ({ params: { id } }) => {
+const Verify = async ({ params }) => {
+   const { id } = await params;
+
    const userToVerify = await getUserToVerify(id);
    if (!userToVerify || userToVerify.isVerified) {
       notFound();

@@ -7,7 +7,9 @@ export const guildMemberRemoveHandler = async (
    try {
       try {
          await guildMember.deleteDM();
-      } catch {}
+      } catch {
+         // ignore
+      }
 
       await prisma.user.delete({
          where: {

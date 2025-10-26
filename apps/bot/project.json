@@ -3,35 +3,39 @@
    "$schema": "../../node_modules/nx/schemas/project-schema.json",
    "sourceRoot": "apps/bot/src",
    "projectType": "application",
+   "tags": [],
    "targets": {
       "build": {
-         "executor": "@nrwl/esbuild:esbuild",
+         "executor": "@nx/esbuild:esbuild",
          "outputs": ["{options.outputPath}"],
          "options": {
             "outputPath": "dist/apps/bot",
             "format": ["cjs"],
             "main": "apps/bot/src/main.ts",
-            "tsConfig": "apps/bot/tsconfig.app.json"
+            "tsConfig": "apps/bot/tsconfig.app.json",
+            "thirdParty": true
          }
       },
       "build:commandDeployment": {
-         "executor": "@nrwl/esbuild:esbuild",
+         "executor": "@nx/esbuild:esbuild",
          "outputs": ["{options.outputPath}"],
          "options": {
             "outputPath": "dist/apps/bot",
             "format": ["cjs"],
             "main": "apps/bot/src/deploy-commands.ts",
-            "tsConfig": "apps/bot/tsconfig.app.json"
+            "tsConfig": "apps/bot/tsconfig.app.json",
+            "thirdParty": true
          }
       },
       "build:reassignVerifiedRole": {
-         "executor": "@nrwl/esbuild:esbuild",
+         "executor": "@nx/esbuild:esbuild",
          "outputs": ["{options.outputPath}"],
          "options": {
             "outputPath": "dist/apps/bot",
             "format": ["cjs"],
             "main": "apps/bot/src/reassign-verified-role.ts",
-            "tsConfig": "apps/bot/tsconfig.app.json"
+            "tsConfig": "apps/bot/tsconfig.app.json",
+            "thirdParty": true
          }
       },
       "serve": {
@@ -64,12 +68,7 @@
          }
       },
       "lint": {
-         "executor": "@nrwl/linter:eslint",
-         "outputs": ["{options.outputFile}"],
-         "options": {
-            "lintFilePatterns": ["apps/bot/**/*.ts"]
-         }
+         "executor": "@nx/eslint:lint"
       }
-   },
-   "tags": []
+   }
 }

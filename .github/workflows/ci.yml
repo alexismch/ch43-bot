@@ -6,6 +6,10 @@ on:
          - main
    pull_request:
 
+permissions:
+   actions: read
+   contents: read
+
 env:
    DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
    DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
@@ -17,25 +21,26 @@ env:
    SECRET_COOKIE_PASSWORD: ${{ secrets.SECRET_COOKIE_PASSWORD }}
    CRYPT_KEY: ${{ secrets.CRYPT_KEY }}
    HASH_KEY: ${{ secrets.HASH_KEY }}
+   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
    main:
-      name: Nx Cloud - Main Job
-      uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.8
-      with:
-         number-of-agents: 3
-         init-commands: |
-            yarn nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
-         parallel-commands: |
-            yarn nx-cloud record -- yarn nx workspace-lint
-            yarn nx-cloud record -- yarn nx format:check
-         parallel-commands-on-agents: |
-            yarn nx affected --target=lint --parallel=3
-            yarn nx affected --target=test --parallel=3 --ci --code-coverage
-            yarn nx affected --target=build --parallel=3
+      runs-on: ubuntu-latest
+      steps:
+         - uses: actions/checkout@v4
+           with:
+              filter: tree:0
+              fetch-depth: 0
 
-   agents:
-      name: Nx Cloud - Agents
-      uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.8
-      with:
-         number-of-agents: 3
+         - run: corepack enable
+         - uses: actions/setup-node@v4
+           with:
+              node-version: 20
+              cache: 'yarn'
+
+         - run: yarn install --immutable
+         - uses: nrwl/nx-set-shas@v4
+
+         - run: yarn nx affected -t lint test build
+         - run: yarn nx fix-ci
+           if: always()

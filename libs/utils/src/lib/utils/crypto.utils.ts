@@ -13,7 +13,7 @@ export class CryptoUtils {
       const iv = Crypto.randomBytes(16);
       const cipher = Crypto.createCipheriv(
          CryptoUtils.ENCRYPTION_ALGORITHM,
-         Buffer.from(process.env.CRYPT_KEY, 'binary'),
+         Buffer.from(process.env.CRYPT_KEY as string, 'binary'),
          iv,
       );
       let encrypted = cipher.update(from, 'utf-8', 'hex');
@@ -29,7 +29,7 @@ export class CryptoUtils {
       const iv = Buffer.from(encryptedData[0], 'hex');
       const decipher = Crypto.createDecipheriv(
          CryptoUtils.ENCRYPTION_ALGORITHM,
-         Buffer.from(process.env.CRYPT_KEY, 'binary'),
+         Buffer.from(process.env.CRYPT_KEY as string, 'binary'),
          iv,
       );
       const decrypted = decipher.update(encryptedData[1], 'hex', 'utf-8');
@@ -42,7 +42,7 @@ export class CryptoUtils {
    static hash(value: string, additionalValues?: string[]): string {
       const hmac = Crypto.createHmac(
          CryptoUtils.HASH_ALGORITHM,
-         Buffer.from(process.env.HASH_KEY, 'binary'),
+         Buffer.from(process.env.HASH_KEY as string, 'binary'),
       );
 
       // Values array

@@ -16,7 +16,7 @@ class EncryptionMiddleware implements PrismaMiddleware {
       if (!source) {
          return source;
       } else if (isArray(source)) {
-         const encryptedObjects = [];
+         const encryptedObjects: any[] = [];
 
          for (let i = 0; i < source.length; i++) {
             encryptedObjects.push(this.encrypt(source[i], onlyKeepHash));
@@ -54,7 +54,7 @@ class EncryptionMiddleware implements PrismaMiddleware {
       if (!source) {
          return source;
       } else if (isArray(source)) {
-         const decryptedObjects = [];
+         const decryptedObjects: any[] = [];
 
          for (let i = 0; i < source.length; i++) {
             decryptedObjects.push(this.decrypt(source[i]));
