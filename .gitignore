@@ -56,5 +56,4 @@ Thumbs.db
 migrations.json
 
 .yarn/
-.yarnrc.yml
 .pnp.*
