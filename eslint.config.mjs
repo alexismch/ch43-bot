@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([
-   globalIgnores(['libs/prisma/src/client']),
+   globalIgnores(['libs/prisma/src/client', 'apps/front/dist', 'node_modules']),
    {
       plugins: {
          '@nrwl/nx': nrwlNx,

@@ -27,7 +27,7 @@
    "private": true,
    "dependencies": {
       "@discordjs/builders": "1.4.0",
-      "@prisma/client": "4.9.0",
+      "@prisma/client": "4.16.2",
       "class-validator": "0.14.0",
       "discord-api-types": "0.37.28",
       "discord.js": "14.7.1",
@@ -67,7 +67,7 @@
       "lint-staged": "13.1.0",
       "nx": "22.0.1",
       "prettier": "2.6.2",
-      "prisma": "4.9.0",
+      "prisma": "4.16.2",
       "typescript": "4.8.4"
    },
    "lint-staged": {
