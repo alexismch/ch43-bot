@@ -6894,7 +6894,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:8.46.2"
     "@typescript-eslint/parser": "npm:8.46.2"
     class-validator: "npm:0.14.0"
-    discord-api-types: "npm:0.37.28"
+    discord-api-types: "npm:0.37.31"
     discord.js: "npm:14.7.1"
     dotenv: "npm:16.0.3"
     esbuild: "npm:0.19.9"
@@ -8093,24 +8093,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discord-api-types@npm:0.37.28":
-  version: 0.37.28
-  resolution: "discord-api-types@npm:0.37.28"
-  checksum: 10c0/18fec7137ddd0df8dff7ac096a15261730ccad4e1af2475b7a9d7c6694b67d5b85890ef12a7b3c36b33275dac1d207045f9c0add38478521ec436d839472d988
-  languageName: node
-  linkType: hard
-
-"discord-api-types@npm:^0.37.20, discord-api-types@npm:^0.37.41":
-  version: 0.37.120
-  resolution: "discord-api-types@npm:0.37.120"
-  checksum: 10c0/bb9e2c7d35c94fedfd38d58b15969a73644ee9d6a593f0ddced3d1ba43e87b4696e66ce73c8775626bb7b8d02e6890c02d2bb4aca1a9b24f5f4c36b12c1beaa8
-  languageName: node
-  linkType: hard
-
-"discord-api-types@npm:^0.38.1, discord-api-types@npm:^0.38.31":
-  version: 0.38.31
-  resolution: "discord-api-types@npm:0.38.31"
-  checksum: 10c0/066b39b2585e9d303597cf531ed141d827292fd7bcfc0c6f7f5f2966d1d9d3b1a734571ef2bb5660d4ab49e5877fa2342773755ee348b8a08be2a0ec7df53256
+"discord-api-types@npm:0.37.31":
+  version: 0.37.31
+  resolution: "discord-api-types@npm:0.37.31"
+  checksum: 10c0/5740943d72f1e29d0d43fd14be38d4e1dc8f21d5031de08b52d28079f3194f3ae56bb91bd866f2363c7698020b430e88f19fad703613b95c0a96d114d2ad7d00
   languageName: node
   linkType: hard
 
