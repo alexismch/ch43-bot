@@ -30,7 +30,7 @@
       "class-validator": "0.14.0",
       "discord.js": "14.24.0",
       "dotenv": "16.0.3",
-      "next": "15.5.6",
+      "next": "15.5.7",
       "next-auth": "4.24.11",
       "react": "19.2.0",
       "react-dom": "19.2.0",
